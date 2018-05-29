@@ -5,10 +5,26 @@
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
     </head>
     <body>
-        <form>
-            Nome<input type="text" id="nome"/>
-            <input type="submit" value="pesquisar"/>
-            <button>Novo Aluno</button>
-        </form>
+        <div>
+            <h1>Lista de Alunos</h1>
+            <form>
+                <div>
+                    <label for="nameId">Nome: </label>
+                    <input type="text" id="nameId" placeholder="Digite o nome..." />
+                </div>
+                <div>
+                    <button type="submit" id="btnAtualizar">Atualizar</button>
+                 </div>
+            </form>
+            <div>
+                <table id="aluno-table">
+                    <tr>
+                        <th></th>
+                        <th>Nome</th>
+                        <th>Idade</th>          
+                    </tr>
+                </table>
+            </div>
+        </div>
     </body>
 </html>
