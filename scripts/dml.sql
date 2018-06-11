@@ -1,14 +1,14 @@
-Insert into aluno(Nome, Idade) Value('Gilson', 37)
+-- inserir
+INSERT INTO Alunos(nome, idade) VALUES(?,?);
+
+-- atualizar 
+UPDATE Alunos SET nome = ?, idade = ? WHERE id = ?;
+
+-- deletar
+DELETE FROM Alunos WHERE id = ?;
 
 -- selecionar
+SELECT id, nome, idade FROM Alunos;
 
-select * from aluno 
-
--- atualizar
-
-
-update aluno set Nome='Polito' where idAluno = 1
-
--- selecionar com o nome como parâmetro
-
-select idAluno, Nome, Idade from aluno where Nome like '%o%'
+-- selecionar com o nome como parametro
+SELECT id, nome, idade FROM Alunos WHERE nome LIKE ?
