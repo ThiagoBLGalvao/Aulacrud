@@ -1,32 +1,50 @@
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
     <head>
-        <title>Start Page</title>
+        <title>Lista de Alunos</title>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <link rel='stylesheet' href='<%=org.webjars.AssetLocator.getWebJarPath("css/bootstrap.min.css")%>'>
-        <link rel='stylesheet' href='<%=org.webjars.AssetLocator.getWebJarPath("css/bootstrap-theme.min.css")%>'>        
+        <link rel='stylesheet' href='<%= org.webjars.AssetLocator.getWebJarPath("css/bootstrap.min.css")%>'>
+        <link rel='stylesheet' href='<%= org.webjars.AssetLocator.getWebJarPath("css/bootstrap-theme.min.css")%>'>
+        <style type="text/css">
+            #alunos-div{
+                height: 250px;
+                overflow-y: auto;
+            }
+        </style>
     </head>
     <body>
-        <div class="conteiner">
+        <div class="container">
             <h1>Lista de Alunos</h1>
-            <form>
+            <form action="ListaAlunoServlet" method="POST">
                 <div class="form-group">
-                    <label class="control-label" for="nameId">Nome: </label>
-                    <input class="form-control" type="text" id="nameId" placeholder="Digite o nome..." />
+                    <label class="control-label" for="nome">Nome: </label>
+                    <input value="${nomePesquisado}" class="form-control" name="nome" id="nome" type="text" />
                 </div>
                 <div class="form-group">
                     <button class="btn btn-primary" type="submit" id="btnAtualizar">Atualizar</button>
-                 </div>
+                    <button class="btn btn-primary" type="submit" id="btnNovo">Novo</button>
+                </div>
             </form>
-            <div id="aluno-div">
+            <div id="alunos-div">
                 <table class="table-striped" id="aluno-table">
                     <tr>
-                        <th></th>
-                        <th>Nome</th>
-                        <th>Idade</th>          
+                        <th class="col-xs-2"></th>
+                        <th class="col-xs-4">Nome</th>
+                        <th class="col-xs-6">Idade</th>
                     </tr>
+                    <c:forEach var="aluno" items="${alunos}">
+                        <tr>
+                            <td class="col-xs-2"></td>
+                            <td class="col-xs-4">${aluno.nome}</td>
+                            <td class="col-xs-6">${aluno.idade}</td>
+                        </tr>
+                    </c:forEach>
                 </table>
             </div>
         </div>
+        <script type='text/javascript' src='<%= org.webjars.AssetLocator.getWebJarPath("jquery.min.js")%>'></script>
+        <script type='text/javascript' src='<%= org.webjars.AssetLocator.getWebJarPath("js/bootstrap.min.js")%>'></script>
     </body>
 </html>
